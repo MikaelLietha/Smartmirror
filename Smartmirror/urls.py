@@ -1,10 +1,19 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.contrib import admin
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
+from . import views
+
+urlpatterns = [ 
+	url(r'^polls/', include('polls.urls')),
+	url(r'^admin/', admin.site.urls),
+    url(r'^Test/', views.Test),
+    url(r'^$', views.index, name="index"),
+	]
+	#patterns('',
     # Examples:
     # url(r'^$', 'Smartmirror.views.home', name='home'),
     # url(r'^Smartmirror/', include('Smartmirror.foo.urls')),
@@ -14,4 +23,4 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-)
+	#)
